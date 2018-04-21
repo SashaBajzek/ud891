@@ -67,6 +67,7 @@ button {
 }
 
 button#toggle-cvox {
+<<<<<<< HEAD
   border: 1px solid rgba(0, 0, 0, 0);
   background-color: #2196F3;
   padding: 2px;
@@ -142,6 +143,7 @@ body[enabled] button#toggle-cvox span#enable-cvox {
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 <div id="shade" class="shade" aria=hidden="true">
   <span id="cvox-logo">
     <img height="24" width="24" src="chromevox-no-background.svg" alt="ChromeVox Lite logo" class="enabled">
@@ -149,6 +151,12 @@ body[enabled] button#toggle-cvox span#enable-cvox {
   </span>
   <span id="caption"></span>
   <button id="toggle-cvox"><span id="enable-cvox">Enable ChromeVox Lite</span><span id="disable-cvox">Disable ChromeVox Lite</button>
+=======
+
+<div id="shade" class="shade" aria=hidden="true">
+  <button id="toggle-cvox"><img height="24" width="24" src="chromevox-no-background.svg" alt="Enable ChromeVox" title="Enable ChromeVox"></button>
+  <span id="caption"></span>
+>>>>>>> 1ccf91bec2cc21e172802c8f6e3646638bfd96c6
 </div>
 <div id="cvoxembed" class="cvoxembed" aria-hidden="true">
   <div class="content">
@@ -171,8 +179,13 @@ body[enabled] button#toggle-cvox span#enable-cvox {
       </span>
       <span>
         Navigate:
+<<<<<<< HEAD
         <button id="previous">Previous</button>
         <button id="next">Next</button>
+=======
+        <button id="next">Next</button>
+        <button id="previous">Previous</button>
+>>>>>>> 1ccf91bec2cc21e172802c8f6e3646638bfd96c6
         <button id="click">Click</button>
         <button id="heading">Heading</button>
         <button id="top">Top</button>
@@ -214,7 +227,11 @@ function cvoxEmbedDisable() {
   window.parent.postMessage('disable', '*');
   caption.innerHTML = '';
 
+<<<<<<< HEAD
   document.body.removeAttribute('enabled');
+=======
+  enabled = false;
+>>>>>>> 1ccf91bec2cc21e172802c8f6e3646638bfd96c6
   for (var i = 0; i < ctrls.length; i++)
     ctrls[i].disabled = true;
 }
@@ -222,7 +239,11 @@ function cvoxEmbedDisable() {
 cvoxEmbedDisable();
 
 $('toggle-cvox').addEventListener('click', function(e) {
+<<<<<<< HEAD
   if (document.body.hasAttribute('enabled'))
+=======
+  if (enabled)
+>>>>>>> 1ccf91bec2cc21e172802c8f6e3646638bfd96c6
     cvoxEmbedDisable();
   else
     cvoxEmbedEnable();
@@ -357,13 +378,21 @@ window.addEventListener('message', function(e) {
     cvoxEmbedEnable();
     break;
   case 'speak':
+<<<<<<< HEAD
     console.log('speak', e.data);
+=======
+    console.log("data", e.data, speechQueue);
+>>>>>>> 1ccf91bec2cc21e172802c8f6e3646638bfd96c6
     var text = e.data.text;
     var queueMode = e.data.queueMode;
     var params = e.data.params;
     if (queueMode == 0)
       caption.innerHTML = '';
+<<<<<<< HEAD
     else if (caption.textContent !== '')
+=======
+    else
+>>>>>>> 1ccf91bec2cc21e172802c8f6e3646638bfd96c6
       caption.innerHTML += ',&nbsp;'
     var str = '<span>' + text + '</span>&nbsp;&nbsp;';
     if (params.pitch < 0.5)
@@ -372,7 +401,6 @@ window.addEventListener('message', function(e) {
       caption.innerHTML += '<b>' + text + '</b>';
 
     if (queueMode == 0) {
-      speechSynthesis.cancel();
       speechQueue.length = 0;
     }
 
@@ -381,7 +409,10 @@ window.addEventListener('message', function(e) {
     speakNextUtterance();
     break;
   case 'stop':
+<<<<<<< HEAD
     caption.innerHTML = '';
+=======
+>>>>>>> 1ccf91bec2cc21e172802c8f6e3646638bfd96c6
     speechSynthesis.cancel();
     break;
   case 'setLang':
